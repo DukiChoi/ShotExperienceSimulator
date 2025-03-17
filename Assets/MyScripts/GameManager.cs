@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     {
         Obj[0].SetActive(false);
         Obj[1].SetActive(false);
+        TitleText[0].text = "";
+        TitleText[1].text = "";
+
     }
 
     // Update is called once per frame
@@ -29,17 +32,23 @@ public class GameManager : MonoBehaviour
         {
             Obj[0].SetActive(true);
             Obj[1].SetActive(false);
+            TitleText[0].text = "1. GunShot";
+            TitleText[1].text = "";
         }
         else if (Input.GetKeyDown(KeyCode.F2) && currentkey != CURRENT_KEY.F2 && currentkey != CURRENT_KEY.F1)
         {
             Obj[0].SetActive(false);
             Obj[1].SetActive(true);
+            TitleText[0].text = "";
+            TitleText[1].text = "2. Gerenade";
         }
         //F3:: 게임 끝내기
         else if (Input.GetKeyDown(KeyCode.F3))
         {
             Obj[0].SetActive(false);
             Obj[1].SetActive(false);
+            TitleText[0].text = "";
+            TitleText[1].text = "";
         }
     }
 }
