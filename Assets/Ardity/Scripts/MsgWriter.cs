@@ -14,12 +14,13 @@ public class MsgWriter : MonoBehaviour
     public float ori_x, ori_y, ori_z, acc_x, acc_y, acc_z;
     [SerializeField]
     public int button;
-    
-    [Header("<Reference>")]
-    //각각 b_r_thumb/ b_l_thumb3 넣는다.
+
+    //[Header("<Reference>")]
+    ////각각 b_r_thumb/ b_l_thumb3 넣는다.
     public GameObject rightHand;
     public GameObject leftHand;
     private GameObject hand;
+
     //private OVRSkeleton skeleton;
     // Start is called before the first frame update
     //private void Start()

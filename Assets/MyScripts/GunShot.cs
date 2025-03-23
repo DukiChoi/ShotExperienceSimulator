@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-
 public class GunShot : MonoBehaviour
 {
     public float damage = 10f;
@@ -14,7 +13,17 @@ public class GunShot : MonoBehaviour
     public GameObject Controller;
     public GameObject[] target;
     public TextMeshPro targetText;
+    public ParticleSystem muzzleFlash;
     private LineRenderer lineRenderer;
+    public GameObject impactEffect;
+    public float impactForce = 30;
+    public float fireRate = 15f;
+    public float nextTimeToFire = 0.1f;
+
+    public float ClipLength = 0.4f;
+    public GameObject AudioClip;
+
+    
     int layerMask;
     float ray_length = 10f;
     Color ray_color = Color.yellow;
@@ -36,12 +45,15 @@ public class GunShot : MonoBehaviour
     {
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.widthMultiplier = 0.01f;
+        lineRenderer.widthMultiplier = 0.005f;
         lineRenderer.positionCount = 2;
 
         // »¡°£ ¼±!
         lineRenderer.startColor = Color.red;
         lineRenderer.endColor = Color.red;
+        // ¼Ò¸® ²¨³õ±â
+        AudioClip.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -49,11 +61,12 @@ public class GunShot : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * ray_length, ray_color);
         //½ºÆäÀÌ½º¹Ù ´©¸£¸é ÃÑ½î±â
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump") && Time.time >= nextTimeToFire)
         {
             ray_color = Color.red;
             targetText.text = "Gun fired at Target " + currentkey;
             targetText.color = ray_color;
+            nextTimeToFire = Time.time + 1f / fireRate;
             Fire();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -135,6 +148,20 @@ public class GunShot : MonoBehaviour
         Vector3 startPos = transform.position;
         if (Physics.Raycast(startPos, transform.forward, out hit, range, layerMask))
         {
+            //ÃÑ ÀÌÆåÆ®!!
+            muzzleFlash.Play();
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO,0.2f);
+
+            //¼Ò¸®ÄÑ±â.
+            AudioClip.SetActive(true);
+            StartCoroutine(DisableAudioAfterSeconds(ClipLength));
+
+
+            if (hit.rigidbody != null) 
+            {
+                hit.rigidbody.AddForce(-hit.normal*impactForce);
+            }
             Debug.DrawRay(startPos, transform.forward * ray_length, ray_color);
             Debug.Log(hit.transform.name + " is shot");
             string cmd_number = "";
@@ -154,6 +181,13 @@ public class GunShot : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         lineRenderer.enabled = false;
+
+    }
+
+    IEnumerator DisableAudioAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        AudioClip.SetActive(false);
 
     }
 
