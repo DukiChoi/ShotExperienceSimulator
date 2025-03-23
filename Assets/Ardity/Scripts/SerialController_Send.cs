@@ -23,7 +23,7 @@ using System.Threading;
  * on the integrity of the message. It's up to the one that makes sense of the
  * data.
  */
-public class SerialController : MonoBehaviour
+public class SerialController_ : MonoBehaviour
 {
 
 
@@ -33,9 +33,9 @@ public class SerialController : MonoBehaviour
     [Tooltip("Baud rate that the serial device is using to transmit data.")]
     public int baudRate = 115200;
 
-    [Tooltip("Reference to an scene object that will receive the events of connection, " +
-             "disconnection and the messages from the serial device.")]
-    public GameObject messageListener;
+    //[Tooltip("Reference to an scene object that will receive the events of connection, " +
+    //         "disconnection and the messages from the serial device.")]
+    //public GameObject messageListener;
     [Tooltip("After an error in the serial communication, or an unsuccessful " +
              "connect, how many milliseconds we should wait.")]
     public int reconnectionDelay = 1000;
@@ -120,38 +120,37 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void FixedUpdate()
     {
-        // If the user prefers to poll the messages instead of receiving them
-        // via SendMessage, then the message listener should be null.
-        if (messageListener == null)
-        {
-            //Debug.Log("No messageListener");
-            return;
-        }
+        //// If the user prefers to poll the messages instead of receiving them
+        //// via SendMessage, then the message listener should be null.
+        //if (messageListener == null)
+        //{
+        //    Debug.Log("No messageListener");
+        //    return;
+        //}
 
 
-        //Debug.Log("There is a messageLister");
-        // Read the next message from the queue
-        message = (string)serialThread.ReadMessage();
+        ////Debug.Log("There is a messageLister");
+        //// Read the next message from the queue
+        //message = (string)serialThread.ReadMessage();
 
-        if (message == null)
-            return;
+        //if (message == null)
+        //    return;
 
-        //Debug.Log("msg is: " +  message);
+        ////Debug.Log("msg is: " +  message);
 
-        // Check if the message is plain data or a connect/disconnect event.
-        if (ReferenceEquals(message, SERIAL_DEVICE_CONNECTED))
-        {
-            messageListener.SendMessage("OnConnectionEvent", true);
-        }
-        else if (ReferenceEquals(message, SERIAL_DEVICE_DISCONNECTED))
-        {
-            messageListener.SendMessage("OnConnectionEvent", false);
-        }
-        else
-        {
-            messageListener.SendMessage("OnMessageArrived", message);
-        }
-        
+        //// Check if the message is plain data or a connect/disconnect event.
+        //if (ReferenceEquals(message, SERIAL_DEVICE_CONNECTED))
+        //{
+        //    messageListener.SendMessage("OnConnectionEvent", true);
+        //}
+        //else if (ReferenceEquals(message, SERIAL_DEVICE_DISCONNECTED))
+        //{
+        //    messageListener.SendMessage("OnConnectionEvent", false);
+        //}
+        //else
+        //{
+        //    messageListener.SendMessage("OnMessageArrived", message);
+        //}
     }
 
     // ------------------------------------------------------------------------

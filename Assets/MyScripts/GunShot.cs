@@ -2,106 +2,188 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 
 public class GunShot : MonoBehaviour
 {
     public float damage = 10f;
     public float range = 100f;
-
+    [Tooltip("Reference to an scene object that will receive the events of connection, " +
+             "disconnection and the messages from the serial device.")]
+    public GameObject Controller;
     public GameObject[] target;
     public TextMeshPro targetText;
+    private LineRenderer lineRenderer;
     int layerMask;
+    float ray_length = 10f;
+    Color ray_color = Color.yellow;
     private enum CURRENT_KEY
     {
-        n1 = 1,
-        n2 = 2,
-        n3 = 3,
-        n4 = 4,
-        n5 = 5,
-        n6 = 6,
-        n7 = 7
+        nothing = -1,
+        T1 = 1,
+        T2 = 2,
+        T3 = 3,
+        T4 = 4,
+        T5 = 5,
+        T6 = 6,
+        T7 = 7
     }
-    CURRENT_KEY currentkey = CURRENT_KEY.n1;
+    CURRENT_KEY currentkey = CURRENT_KEY.nothing;
 
     // Start is called before the first frame update
     void Start()
     {
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.widthMultiplier = 0.01f;
+        lineRenderer.positionCount = 2;
+
+        // 빨간 선!
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 3f, Color.yellow);
+        Debug.DrawRay(transform.position, transform.forward * ray_length, ray_color);
         //스페이스바 누르면 총쏘기
         if (Input.GetButtonDown("Jump"))
         {
-            Shoot();
+            ray_color = Color.red;
+            targetText.text = "Gun fired at Target " + currentkey;
+            targetText.color = ray_color;
+            Fire();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            currentkey = CURRENT_KEY.n1;
-            targetText.text = "Target 1";
+            currentkey = CURRENT_KEY.T1;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[0].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentkey = CURRENT_KEY.n2;
-            targetText.text = "Target 2";
+            currentkey = CURRENT_KEY.T2;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[1].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            currentkey = CURRENT_KEY.n3;
-            targetText.text = "Target 3";
+            currentkey = CURRENT_KEY.T3;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[2].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            currentkey = CURRENT_KEY.n4;
-            targetText.text = "Target 4";
+            currentkey = CURRENT_KEY.T4;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[3].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            currentkey = CURRENT_KEY.n5;
-            targetText.text = "Target 5";
+            currentkey = CURRENT_KEY.T5;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[4].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            currentkey = CURRENT_KEY.n6;
-            targetText.text = "Target 6";
+            currentkey = CURRENT_KEY.T6;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[5].transform.position);
+            RedDotSight();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            currentkey = CURRENT_KEY.n7;
-            targetText.text = "Target 7";
+            currentkey = CURRENT_KEY.T7;
+            ray_color = Color.yellow;
+            targetText.text = "Aiming at Target " + currentkey;
+            targetText.color = ray_color;
             LookAtPosition(target[6].transform.position);
+            RedDotSight();
         }
+        else
+        {
+            if (currentkey != CURRENT_KEY.nothing)
+            {
+                LookAtPosition(target[(int)currentkey - 1].transform.position);
+            }
+        }
+
     }
-    void Shoot()
+    void Fire()
     {
         RaycastHit hit;
         layerMask = LayerMask.GetMask("RaycastOnly");
-        if (Physics.Raycast(transform.position, transform.forward, out hit, range, layerMask))
+        Vector3 startPos = transform.position;
+        if (Physics.Raycast(startPos, transform.forward, out hit, range, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.forward * 4f, Color.yellow);
-            Debug.Log(hit.transform.name);
-        }
+            Debug.DrawRay(startPos, transform.forward * ray_length, ray_color);
+            Debug.Log(hit.transform.name + " is shot");
+            string cmd_number = "";
+            for (int i = 1; i <= 16; i++)
+            {
+                if (i == (int)currentkey)
+                    cmd_number += "10";  // 해당 자리만 "10"
+                else
+                    cmd_number += "00";  // 나머지는 "00"
+            }
+            Controller.SendMessage("SendSerialMessage", "FF"+cmd_number);
+            Debug.Log("FF" + cmd_number);
+
+        }       
     }
+    IEnumerator DisableLineAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        lineRenderer.enabled = false;
+
+    }
+
 
     void LookAtPosition(Vector3 targetPosition)
     {
         // 현재 오브젝트의 위치에서 목표 위치로 가는 방향 계산
         Vector3 direction = targetPosition - transform.position;
-
+        
         // 방향 벡터가 0이 아니면 회전 수행
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = targetRotation;
+        }
+    }
+    void RedDotSight()
+    {
+        RaycastHit hit;
+        layerMask = LayerMask.GetMask("RaycastOnly");
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + transform.forward * range;
+        if (Physics.Raycast(startPos, transform.forward, out hit, range, layerMask))
+        {
+            endPos = hit.point;
+            // 실제 눈에 보이는 빨간 선을 그림
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, startPos);
+            lineRenderer.SetPosition(1, endPos);
+            StartCoroutine(DisableLineAfterSeconds(2f));  // 2초 뒤에 선 사라짐
         }
     }
 }

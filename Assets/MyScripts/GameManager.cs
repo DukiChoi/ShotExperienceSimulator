@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             Obj[0].SetActive(true);
             Obj[1].SetActive(false);
             TitleText[0].text = "1. GunShot";
+            TitleText[0].color = new Color32(0xD4, 0xFF, 0x00, 255);
             TitleText[1].text = "";
         }
         else if (Input.GetKeyDown(KeyCode.F2) && currentkey != CURRENT_KEY.F2 && currentkey != CURRENT_KEY.F1)
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
             Obj[1].SetActive(true);
             TitleText[0].text = "";
             TitleText[1].text = "2. Gerenade";
+            TitleText[1].color = new Color32(0xD4, 0xFF, 0x00, 255);
         }
         //F3:: 게임 끝내기
         else if (Input.GetKeyDown(KeyCode.F3))
