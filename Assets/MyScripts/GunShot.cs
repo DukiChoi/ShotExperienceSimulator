@@ -16,13 +16,14 @@ public class GunShot : MonoBehaviour
     public ParticleSystem muzzleFlash;
     private LineRenderer lineRenderer;
     public GameObject impactEffect;
+    [Header("<<Gun setting")]
     public float impactForce = 30;
     public float fireRate = 15f;
     public float nextTimeToFire = 0.1f;
-
+    [Header("Audio setting")]
     public float ClipLength = 0.4f;
     public GameObject AudioClip;
-
+    string lastTarget = "";
     
     int layerMask;
     float ray_length = 10f;
@@ -172,8 +173,12 @@ public class GunShot : MonoBehaviour
                 else
                     cmd_number += "00";  // 나머지는 "00"
             }
-            Controller.SendMessage("SendSerialMessage", "FF"+cmd_number);
-            Debug.Log("FF" + cmd_number);
+            if (hit.transform.name != lastTarget)
+            {
+                Controller.SendMessage("SendSerialMessage", "FF" + (string)cmd_number);
+                Debug.Log("FF" + cmd_number);
+                lastTarget = hit.transform.name;
+            }
 
         }       
     }

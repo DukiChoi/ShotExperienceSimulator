@@ -247,24 +247,24 @@ public abstract class AbstractSerialThread
                 SendToWire(outputQueue.Dequeue(), serialPort);
             }
 
-            // Read a message.
-            // If a line was read, and we have not filled our queue, enqueue
-            // this line so it eventually reaches the Message Listener.
-            // Otherwise, discard the line.
-            object inputMessage = ReadFromWire(serialPort);
-            //여기서 계속 inputmsg가 null이 되는 건데...왤까?
-            //Debug.Log("inputmsg is" + (string)inputMessage);
-            if (inputMessage != null)
-            {
-                if (inputQueue.Count < maxUnreadMessages)
-                {
-                    inputQueue.Enqueue(inputMessage);
-                }
-                else
-                {
-                    //Debug.LogWarning("Queue is full. Dropping message: " + inputMessage);
-                }
-            }
+            //// Read a message.
+            //// If a line was read, and we have not filled our queue, enqueue
+            //// this line so it eventually reaches the Message Listener.
+            //// Otherwise, discard the line.
+            //object inputMessage = ReadFromWire(serialPort);
+            ////여기서 계속 inputmsg가 null이 되는 건데...왤까?
+            ////Debug.Log("inputmsg is" + (string)inputMessage);
+            //if (inputMessage != null)
+            //{
+            //    if (inputQueue.Count < maxUnreadMessages)
+            //    {
+            //        inputQueue.Enqueue(inputMessage);
+            //    }
+            //    else
+            //    {
+            //        //Debug.LogWarning("Queue is full. Dropping message: " + inputMessage);
+            //    }
+            //}
         }
         catch (TimeoutException)
         {
