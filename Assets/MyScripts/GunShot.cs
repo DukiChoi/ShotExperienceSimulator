@@ -16,18 +16,22 @@ public class GunShot : MonoBehaviour
     public ParticleSystem muzzleFlash;
     private LineRenderer lineRenderer;
     public GameObject impactEffect;
-    [Header("<<Gun setting")]
+    [Header("Gun setting")]
     public float impactForce = 30;
-    public float fireRate = 15f;
+    public float fireRate = 20f;
     public float nextTimeToFire = 0.1f;
     [Header("Audio setting")]
-    public float ClipLength = 0.4f;
+    public float ClipLength = 4f;
     public GameObject AudioClip;
     string lastTarget = "";
-    
+    [Header("Stimulation Setting")]
+    public float StimulationLength = 3f;
+
     int layerMask;
     float ray_length = 10f;
     Color ray_color = Color.yellow;
+    private Quaternion originalRotation;
+    private Coroutine currentShakeCoroutine;
     private enum CURRENT_KEY
     {
         nothing = -1,
@@ -68,13 +72,31 @@ public class GunShot : MonoBehaviour
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.widthMultiplier = 0.005f;
         lineRenderer.positionCount = 2;
-
+        originalRotation = transform.rotation;
         // 빨간 선!
         lineRenderer.startColor = Color.red;
         lineRenderer.endColor = Color.red;
         // 소리 꺼놓기
         AudioClip.SetActive(false);
+        muzzleFlash.Pause();
 
+    }
+    private void OnEnable()
+    {
+        // 소리랑 불빛 꺼놓기
+        AudioClip.SetActive(false);
+        muzzleFlash.Pause();
+        currentkey = CURRENT_KEY.nothing;
+    }
+    public void OnDisable()
+    {
+        // 소리랑 불빛 꺼놓기
+        AudioClip.SetActive(false);
+        muzzleFlash.Pause();
+        lineRenderer.enabled = false;
+        // 원래 시작 방향으로 돌려놓기.
+        transform.rotation = originalRotation;
+        
     }
 
     // Update is called once per frame
@@ -88,7 +110,8 @@ public class GunShot : MonoBehaviour
             targetText.text = "Gun fired at Target " + currentkey;
             targetText.color = ray_color;
             nextTimeToFire = Time.time + 1f / fireRate;
-            Fire();
+            if(currentkey != CURRENT_KEY.nothing)
+                Fire();
         }
 
         // 타겟 선택 (Alpha1 ~ Alpha7)
@@ -126,6 +149,7 @@ public class GunShot : MonoBehaviour
         if (Physics.Raycast(startPos, transform.forward, out hit, range, layerMask))
         {
             //총 이펙트!!
+
             muzzleFlash.Play();
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO,0.2f);
@@ -141,35 +165,41 @@ public class GunShot : MonoBehaviour
             }
             Debug.DrawRay(startPos, transform.forward * ray_length, ray_color);
             Debug.Log(hit.transform.name + " is shot");
-            string cmd_number = "";
+            string cmd_shoot_F = "";
+            string cmd_shoot_V = "";
             for (int i = 1; i <= 16; i++)
             {
                 if (i == (int)currentkey)
-                    cmd_number += "10";  // 해당 자리만 "10"
+                {
+                    cmd_shoot_F += "10";  // 해당 자리만 "10"
+                    cmd_shoot_V += "EF";
+                }
                 else
-                    cmd_number += "00";  // 나머지는 "00"
-            }
-            if (hit.transform.name != lastTarget)
-            {
-                Controller.SendMessage("SendSerialMessage", "FF" + (string)cmd_number);
-                Debug.Log("FF" + cmd_number);
-                lastTarget = hit.transform.name;
+                {
+                    cmd_shoot_F += "00";  // 나머지는 "00"
+                    cmd_shoot_V += "00";
+                }
             }
 
+            //if (hit.transform.name != lastTarget)
+            //{
+
+            //    lastTarget = hit.transform.name;
+                
+            //}
+
+            StartCoroutine(EnableStimuli(cmd_shoot_F, cmd_shoot_V));
+            Debug.Log("FF" + (string)cmd_shoot_F);
+            Debug.Log("F0" + (string)cmd_shoot_V);
+
+            //StartCoroutine(DisableStimuliAfterSeconds(StimulationLength));  // 2초 뒤에 Stimuli 사라짐
+            // 이전 코루틴 중지
+            if (currentShakeCoroutine != null)
+                StopCoroutine(currentShakeCoroutine);
+
+            // 새 코루틴 실행
+            currentShakeCoroutine = StartCoroutine(DisableStimuliAfterSeconds(StimulationLength));
         }       
-    }
-    IEnumerator DisableLineAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        lineRenderer.enabled = false;
-
-    }
-
-    IEnumerator DisableAudioAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        AudioClip.SetActive(false);
-
     }
 
 
@@ -198,7 +228,37 @@ public class GunShot : MonoBehaviour
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, startPos);
             lineRenderer.SetPosition(1, endPos);
-            StartCoroutine(DisableLineAfterSeconds(2f));  // 2초 뒤에 선 사라짐
+            StartCoroutine(DisableLineAfterSeconds(1f));  // 1초 뒤에 선 사라짐
         }
+    }
+    IEnumerator DisableLineAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        lineRenderer.enabled = false;
+
+    }
+
+    IEnumerator DisableAudioAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        AudioClip.SetActive(false);
+
+    }
+    IEnumerator EnableStimuli(string cmd_F, string cmd_V)
+    {
+        Controller.SendMessage("SendSerialMessage", "FF" + (string)cmd_F);
+        Debug.Log("FF" + (string)cmd_F);
+        yield return new WaitForSeconds(0.1f);
+        Controller.SendMessage("SendSerialMessage", "F0" + (string)cmd_V);
+        Debug.Log("F0" + (string)cmd_V);
+    }
+    IEnumerator DisableStimuliAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Controller.SendMessage("SendSerialMessage", "FF00000000000000000000000000000000");
+        Debug.Log("FF00000000000000000000000000000000");
+        yield return new WaitForSeconds(0.1f);
+        Controller.SendMessage("SendSerialMessage", "F000000000000000000000000000000000");
+        Debug.Log("F000000000000000000000000000000000");
     }
 }
