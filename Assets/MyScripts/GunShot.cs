@@ -31,15 +31,35 @@ public class GunShot : MonoBehaviour
     private enum CURRENT_KEY
     {
         nothing = -1,
-        T1 = 1,
-        T2 = 2,
-        T3 = 3,
-        T4 = 4,
-        T5 = 5,
-        T6 = 6,
-        T7 = 7
+        T1 = 1, T2 = 2,
+        T3 = 3, T4 = 4,
+        T5 = 5, T6 = 6,
+        T7 = 7,T8 = 8, 
+        T9 = 9, T10 = 10, 
+        T11 = 11, T12 = 12, 
+        T13 = 13, T14 = 14, 
+        T15 = 15, T16 = 16
     }
     CURRENT_KEY currentkey = CURRENT_KEY.nothing;
+    private Dictionary<KeyCode, int> keyTargetMap = new Dictionary<KeyCode, int>()
+{
+    { KeyCode.Alpha1, 1 },
+    { KeyCode.Alpha2, 2 },
+    { KeyCode.Alpha3, 3 },
+    { KeyCode.Alpha4, 4 },
+    { KeyCode.Alpha5, 5 },
+    { KeyCode.Alpha6, 6 },
+    { KeyCode.Alpha7, 7 },
+    { KeyCode.Alpha8, 8 },
+    { KeyCode.Alpha9, 9 },
+    { KeyCode.Alpha0, 10 },
+    { KeyCode.Minus, 11 },
+    { KeyCode.Equals, 12 },
+    { KeyCode.F5, 13 },
+    { KeyCode.F6, 14 },
+    { KeyCode.F7, 15 },
+    { KeyCode.F8, 16 },
+};
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +81,7 @@ public class GunShot : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(transform.position, transform.forward * ray_length, ray_color);
-        //스페이스바 누르면 총쏘기
+        // 스페이스바 누르면 총쏘기
         if (Input.GetButton("Jump") && Time.time >= nextTimeToFire)
         {
             ray_color = Color.red;
@@ -70,77 +90,33 @@ public class GunShot : MonoBehaviour
             nextTimeToFire = Time.time + 1f / fireRate;
             Fire();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        // 타겟 선택 (Alpha1 ~ Alpha7)
+        foreach (var pair in keyTargetMap)
         {
-            currentkey = CURRENT_KEY.T1;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[0].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentkey = CURRENT_KEY.T2;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[1].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentkey = CURRENT_KEY.T3;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[2].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            currentkey = CURRENT_KEY.T4;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[3].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            currentkey = CURRENT_KEY.T5;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[4].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            currentkey = CURRENT_KEY.T6;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[5].transform.position);
-            RedDotSight();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            currentkey = CURRENT_KEY.T7;
-            ray_color = Color.yellow;
-            targetText.text = "Aiming at Target " + currentkey;
-            targetText.color = ray_color;
-            LookAtPosition(target[6].transform.position);
-            RedDotSight();
-        }
-        else
-        {
-            if (currentkey != CURRENT_KEY.nothing)
+            if (Input.GetKeyDown(pair.Key))
             {
-                LookAtPosition(target[(int)currentkey - 1].transform.position);
+                int index = pair.Value - 1;
+
+                // 범위 체크
+                if (index >= 0 && index < target.Length)
+                {
+                    currentkey = (CURRENT_KEY)pair.Value;
+                    ray_color = Color.yellow;
+                    targetText.text = "Aiming at Target " + currentkey;
+                    targetText.color = ray_color;
+                    LookAtPosition(target[index].transform.position);
+                    RedDotSight();
+                }
+                break;
             }
         }
 
+        // 항상 바라보기
+        if (currentkey != CURRENT_KEY.nothing)
+        {
+            LookAtPosition(target[(int)currentkey - 1].transform.position);
+        }
     }
     void Fire()
     {

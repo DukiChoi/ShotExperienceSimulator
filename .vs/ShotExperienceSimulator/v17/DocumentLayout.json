@@ -1,34 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\HYU\\ShotExperienceSimulator\\",
+  "WorkspaceRootPath": "C:\\Users\\HYU\\VR\\ShotExperienceSimulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\myscripts\\gunshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\vr\\shotexperiencesimulator\\assets\\myscripts\\gunshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\myscripts\\gunshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\ardity\\scripts\\serialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\ardity\\scripts\\serialcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\ardity\\scripts\\threads\\abstractserialthread.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\ardity\\scripts\\threads\\abstractserialthread.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\myscripts\\settingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\myscripts\\settingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\ardity\\scripts\\msgwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\ardity\\scripts\\msgwriter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AFD0C63B-6E4A-CBBA-D4A7-2D1E1A59FCB9}|Oculus.VR.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\oculus\\vr\\scripts\\ovrmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AFD0C63B-6E4A-CBBA-D4A7-2D1E1A59FCB9}|Oculus.VR.csproj|solutionrelative:assets\\oculus\\vr\\scripts\\ovrmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|c:\\users\\hyu\\shotexperiencesimulator\\assets\\ardity\\scripts\\threads\\serialthreadlines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2E0DC33-9688-5799-917B-7E98ACFF89F4}|Assembly-CSharp.csproj|solutionrelative:assets\\ardity\\scripts\\threads\\serialthreadlines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,95 +14,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OVRManager.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Oculus\\VR\\Scripts\\OVRManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Oculus\\VR\\Scripts\\OVRManager.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Oculus\\VR\\Scripts\\OVRManager.cs",
-              "RelativeToolTip": "Assets\\Oculus\\VR\\Scripts\\OVRManager.cs",
-              "ViewState": "AgIAAIwLAAAAAAAAAAAqwLELAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T07:16:30.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MsgWriter.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\MsgWriter.cs",
-              "RelativeDocumentMoniker": "Assets\\Ardity\\Scripts\\MsgWriter.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\MsgWriter.cs",
-              "RelativeToolTip": "Assets\\Ardity\\Scripts\\MsgWriter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T06:57:41.43Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SettingController.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\MyScripts\\SettingController.cs",
-              "RelativeDocumentMoniker": "Assets\\MyScripts\\SettingController.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\MyScripts\\SettingController.cs",
-              "RelativeToolTip": "Assets\\MyScripts\\SettingController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T06:53:00.541Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AbstractSerialThread.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\Threads\\AbstractSerialThread.cs",
-              "RelativeDocumentMoniker": "Assets\\Ardity\\Scripts\\Threads\\AbstractSerialThread.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\Threads\\AbstractSerialThread.cs",
-              "RelativeToolTip": "Assets\\Ardity\\Scripts\\Threads\\AbstractSerialThread.cs",
-              "ViewState": "AgIAAOUAAAAAAAAAAAAmwPcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T06:33:09.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SerialController.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\SerialController.cs",
-              "RelativeDocumentMoniker": "Assets\\Ardity\\Scripts\\SerialController.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\SerialController.cs",
-              "RelativeToolTip": "Assets\\Ardity\\Scripts\\SerialController.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAqwI8AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T06:32:12.399Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SerialThreadLines.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\Threads\\SerialThreadLines.cs",
-              "RelativeDocumentMoniker": "Assets\\Ardity\\Scripts\\Threads\\SerialThreadLines.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\Ardity\\Scripts\\Threads\\SerialThreadLines.cs",
-              "RelativeToolTip": "Assets\\Ardity\\Scripts\\Threads\\SerialThreadLines.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwCEAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T06:26:49.897Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "GunShot.cs",
-              "DocumentMoniker": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\MyScripts\\GunShot.cs",
+              "DocumentMoniker": "C:\\Users\\HYU\\VR\\ShotExperienceSimulator\\Assets\\MyScripts\\GunShot.cs",
               "RelativeDocumentMoniker": "Assets\\MyScripts\\GunShot.cs",
-              "ToolTip": "C:\\Users\\HYU\\ShotExperienceSimulator\\Assets\\MyScripts\\GunShot.cs",
+              "ToolTip": "C:\\Users\\HYU\\VR\\ShotExperienceSimulator\\Assets\\MyScripts\\GunShot.cs",
               "RelativeToolTip": "Assets\\MyScripts\\GunShot.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAgwLMAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAwJ4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T04:34:33.109Z",
               "EditorCaption": ""
