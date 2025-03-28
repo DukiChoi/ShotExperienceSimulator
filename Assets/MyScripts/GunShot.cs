@@ -171,8 +171,8 @@ public class GunShot : MonoBehaviour
             {
                 if (i == (int)currentkey)
                 {
-                    cmd_shoot_F += "10";  // 해당 자리만 "10"
-                    cmd_shoot_V += "EF";
+                    cmd_shoot_F += "05";  // 해당 자리만 "10"
+                    cmd_shoot_V += "F4";
                 }
                 else
                 {

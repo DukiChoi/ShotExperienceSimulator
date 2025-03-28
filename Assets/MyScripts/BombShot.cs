@@ -89,8 +89,8 @@ public class BombShot : MonoBehaviour
         string cmd_explosion_V = "";
         for (int i = 0; i < 16; i++)
         {
-            cmd_explosion_F += "44";  // 모든 자리에 "44"
-            cmd_explosion_V += "EF";  // 모든 자리에 "EF"
+            cmd_explosion_F += "46";  // 모든 자리에 "44"
+            cmd_explosion_V += "F4";  // 모든 자리에 "EF"
         }
 
 
