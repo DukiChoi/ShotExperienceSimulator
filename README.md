@@ -1,2 +1,33 @@
 # ShotExperienceSimulator
-Try if you wanna get shot.
+
+한양대 유연 전자소자 연구실과 협업한 프로젝트 - (가제) 유연 전자소자 기반 전신 전기자극 슈트의 개발 및 응용 가능성 검증 연구
+VR 실험 프로젝트로, 전기 발생 유연 소자를 사용하였을 때 다양한 태스크 수행을 시뮬레이션하고 그 결과를 정량적으로 분석합니다.
+
+---
+## 📌 첫번쨰 전기 Stimulation 실험
+9명의 피험자를 대상으로 수트 내 전기 자극 모듈이 각 부위에서 안정적으로 전기적 신호를 발생시키는지를 확인하였고, VR 환경과 연동하여 토마토 옮기기, 선 그리기 등의 시뮬레이션 과제를 수행하도록 하여, 전기적 Stimulation에 따른 떨림의 변화를 난이도에 따라 분석함. 케이스 별로 변화를 주어 모니터링하여 자극 강도에 따라 손 떨림이 완화되는 것을 검증하기 위함.
+
+### 1. Marker Task 실험 모습
+<img width="700" height="700" alt="Marker Task 외부" src="https://github.com/user-attachments/assets/a0b109bb-5db4-4d4f-8ae5-a1f46dbf06a7" />
+
+### 2. Spoon Task 실험 모습
+<img width="700" height="700" alt="Spoon Task 외부" src="https://github.com/user-attachments/assets/ad198090-0404-41ba-be72-2f681c13aec9" />
+
+
+### 3. 컨트롤러 사진
+<img width="577" height="433" alt="검은배경" src="https://github.com/user-attachments/assets/0402e2f4-3dbf-462d-9bc2-e0dc46c1d1ff" />
+
+### 4. VR 내부화면
+<img width="791" height="906" alt="두가지Stimulation실험" src="https://github.com/user-attachments/assets/607f7b44-5cb3-482d-bd9b-a66c9190f9df" />
+
+
+---
+## 🧪 두번쨰 총/수류탄 피격 실험
+햅틱 피드백 기반 물리형 상호작용 시나리오(가상 총알·수류탄 충격)를 Unity 기반 VR 소프트웨어를 구현하고, 시나리오별 전기 자극 세기(주파수·전압)를 달리 적용하여 전신 슈트 착용 시의 효과를 검증.
+
+<img width="1873" height="1234" alt="피격 시뮬레이터-실험모습" src="https://github.com/user-attachments/assets/66d0796e-d128-4ee8-ad84-f74f17631559" />
+
+### 실험 모습
+<img width="1300" height="374" alt="결과그래프2" src="https://github.com/user-attachments/assets/b54a3a3f-dc93-4c15-9e6e-f3575f2cbaeb" />
+
+---
