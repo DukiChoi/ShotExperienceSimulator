@@ -8,7 +8,7 @@ VR 실험 프로젝트로, 전기 발생 유연 소자를 사용하였을 때 �
 ## 📌 첫번쨰 전기 Stimulation 실험
 9명의 피험자를 대상으로 수트 내 전기 자극 모듈이 각 부위에서 안정적으로 전기적 신호를 발생시키는지를 확인하였고, VR 환경과 연동하여 토마토 옮기기, 선 그리기 등의 시뮬레이션 과제를 수행하도록 하여 전기적 Stimulation에 따른 떨림의 변화를 난이도에 따라 분석함. 케이스 별로 변화를 주어 모니터링하였고 자극 강도에 따라 손 떨림이 완화되는 것을 검증하기 위한 실험 환경을 세팅하였음. 
 
-깃허브 링크: (https://github.com/DukiChoi/VR_Project)
+깃허브 링크: https://github.com/DukiChoi/VR_Project
 
 ### 1. Marker Task 실험 모습
 <img width="700" height="700" alt="Marker Task 외부" src="https://github.com/user-attachments/assets/a0b109bb-5db4-4d4f-8ae5-a1f46dbf06a7" />
@@ -26,7 +26,7 @@ VR 실험 프로젝트로, 전기 발생 유연 소자를 사용하였을 때 �
 
 ---
 ## 🧪 두번쨰 총/수류탄 피격 실험
-햅틱 피드백 기반 물리형 상호작용 시나리오(가상 총알·수류탄 충격)를 Unity 기반 VR 소프트웨어를 구현하고, 시나리오별 전기 자극 세기(주파수·전압)를 달리 적용하여 전신 슈트 착용 시의 효과를 검증.
+햅틱 피드백 기반 물리형 상호작용 시나리오(가상 총알·수류탄 충격)를 Unity 기반 VR 소프트웨어를 구현하고, 시나리오별 전기 자극 세기(주파수·전압)를 달리 적용하여 전신 슈트 착용 시의 효과를 검증함. (이 깃허브 ShotExperienceSimulator에 해당되는 실험)
 
 <img width="1873" height="1234" alt="피격 시뮬레이터-실험모습" src="https://github.com/user-attachments/assets/66d0796e-d128-4ee8-ad84-f74f17631559" />
 
