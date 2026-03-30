@@ -35,7 +35,7 @@ We implemented a Unity-based VR environment simulating physical interactions suc
 
 <img width="1873" height="1234" alt="피격 시뮬레이터-실험모습" src="https://github.com/user-attachments/assets/66d0796e-d128-4ee8-ad84-f74f17631559" />
 
-### 실험 모습 - 논문 발췌 (Experimental Results – Extracted from Paper Draft)
+### 실험 모습 - 논문 발췌 (Experimental Results – Excerpt from the Draft Paper)
 <img width="1300" height="374" alt="결과그래프2" src="https://github.com/user-attachments/assets/b54a3a3f-dc93-4c15-9e6e-f3575f2cbaeb" />
 
 ---
