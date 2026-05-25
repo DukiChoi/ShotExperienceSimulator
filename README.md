@@ -3,11 +3,11 @@
 한양대 유연 전자소자 연구실과 협업한 프로젝트 - A lightweight durable full-body electrical stimulation suit for haptic feedback and therapeutic applications
 의 일환으로 진행된 VR 실험 프로젝트로, 전기 발생 유연 소자를 사용하였을 때 다양한 태스크 수행을 시뮬레이션하고 그 결과를 정량적으로 분석합니다.
 아래 실험을 통해 Nature Commuinations에 제출된 저널에 기여하였습니다. 
-- Journal Link : [Nature Communications](https://www.nature.com/articles/s41467-026-71171-y)
+- Journal Link : [A lightweight durable full-body electrical stimulation suit for haptic feedback and therapeutic applications](https://www.nature.com/articles/s41467-026-71171-y)
 
 This project was conducted in collaboration with the Flexible Electronics Lab at Hanyang University as part of a study (A lightweight durable full-body electrical stimulation suit for haptic feedback and therapeutic applications). The VR experiment simulated various tasks using electrical stimulation modules embedded in a wearable suit and quantitatively analyzed the outcomes.
 I contributed to a journal submitted to Nature Communications through the following experiments. 
-- Journal Link: [Nature Communications](https://www.nature.com/articles/s41467-026-71171-y)
+- Journal Link: [A lightweight durable full-body electrical stimulation suit for haptic feedback and therapeutic applications](https://www.nature.com/articles/s41467-026-71171-y)
 
 ---
 ## 📌 첫번쨰 전기 자극 실험 (First Experiment: Electrical Stimulation with VR Tasks)
