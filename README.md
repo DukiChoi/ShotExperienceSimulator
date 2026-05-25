@@ -2,10 +2,11 @@
 
 한양대 유연 전자소자 연구실과 협업한 프로젝트 - (가제) 유연 전자소자 기반 전신 전기자극 슈트의 개발 및 응용 가능성 검증 연구
 의 일환으로 진행된 VR 실험 프로젝트로, 전기 발생 유연 소자를 사용하였을 때 다양한 태스크 수행을 시뮬레이션하고 그 결과를 정량적으로 분석합니다.
-아래 실험을 통해 Nature Commuinations에 제출된 저널에 기여하였습니다. [Journal Link] (https://www.nature.com/articles/s41467-026-71171-y)
+아래 실험을 통해 Nature Commuinations에 제출된 저널에 기여하였습니다. [Journal Link](https://www.nature.com/articles/s41467-026-71171-y)
 
 This project was conducted in collaboration with the Flexible Electronics Lab at Hanyang University as part of a study (tentative title: Development and Validation of a Wearable Full-body Electrical Stimulation Suit Based on Flexible Electronic Devices). The VR experiment simulated various tasks using electrical stimulation modules embedded in a wearable suit and quantitatively analyzed the outcomes.
-I contributed to a journal submitted to Nature Communications through the following experiments. [Journal Link] (https://www.nature.com/articles/s41467-026-71171-y)
+I contributed to a journal submitted to Nature Communications through the following experiments. 
+[Journal Link](https://www.nature.com/articles/s41467-026-71171-y)
 
 ---
 ## 📌 첫번쨰 전기 자극 실험 (First Experiment: Electrical Stimulation with VR Tasks)
